@@ -1,26 +1,135 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --base: #0d0b09;
+  --cream: #f3efe6;
+  --cream-70: rgba(243, 239, 230, 0.7);
+  --cream-46: rgba(243, 239, 230, 0.46);
+  --cream-16: rgba(243, 239, 230, 0.16);
+  --cream-08: rgba(243, 239, 230, 0.08);
+  --font-d: "Inter Tight", sans-serif;
+  --font-b: var(--font-inter), "Inter", sans-serif;
+  --font-m: var(--font-jetbrains), "JetBrains Mono", monospace;
+  --background: #0d0b09;
+  --foreground: #f3efe6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--base);
+  color: var(--cream);
+  font-family: var(--font-b);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Entrance Animations ─── */
+@keyframes blurFadeUp {
+  from {
+    opacity: 0;
+    filter: blur(18px);
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  opacity: 0;
+  animation: blurFadeUp 1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.rise-d0 { animation-delay: 0ms; }
+.rise-d1 { animation-delay: 70ms; }
+.rise-d2 { animation-delay: 140ms; }
+.rise-d3 { animation-delay: 210ms; }
+.rise-d4 { animation-delay: 290ms; }
+.rise-d5 { animation-delay: 400ms; }
+.rise-d6 { animation-delay: 560ms; }
+.rise-d7 { animation-delay: 700ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/* ─── Reveal on scroll ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .85s cubic-bezier(.2,.7,.2,1), transform .85s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Form styles ─── */
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  font-family: var(--font-b);
+  font-size: .85rem;
+  color: var(--cream);
+  background: rgba(243,239,230,.05);
+  border: 1px solid var(--cream-16);
+  border-radius: 12px;
+  padding: .7rem 1rem;
+  outline: none;
+  transition: border-color .3s, background .3s;
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: rgba(243,239,230,.32);
+  background: rgba(243,239,230,.08);
+}
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--cream-46);
+  opacity: 1;
+}
+.form-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' fill='none' stroke='rgba(243,239,230,.46)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+.form-select option {
+  background: var(--base);
+  color: var(--cream);
+}
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
 }
