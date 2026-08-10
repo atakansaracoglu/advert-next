@@ -180,7 +180,7 @@ export default function About() {
               <p style={{ marginTop: "1.2rem" }}>
                 Web tasarımdan otomasyona, video prodüksiyondan dijital reklamcılığa &mdash; her projemizde yapay zek&acirc;nın gücünü stratejik düşünceyle birleştiriyoruz. Amacımız sadece güzel görünen değil, ölçülebilir sonuç üreten dijital deneyimler yaratmak.
               </p>
-              <p style={{ marginTop: "1.2rem" }}>Antalya merkezli ekibimiz, yerel pazarın dinamiklerini global standartlarla buluşturarak her ölçekte markaya hizmet veriyor.</p>
+              <p style={{ marginTop: "1.2rem", marginBottom: "1.2rem" }}>Antalya merkezli ekibimiz, yerel pazarın dinamiklerini global standartlarla buluşturarak her ölçekte markaya hizmet veriyor.</p>
             </div>
             <div className="reveal flex flex-wrap gap-[2.5rem] mt-[2.4rem]">
               {[
