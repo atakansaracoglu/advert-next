@@ -235,19 +235,17 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
         .glass-submit {
           width: 100%;
           position: relative;
-          background: rgba(255,255,255,.12);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255,255,255,.2);
+          background: #1e7bd6;
+          border: 1px solid rgba(30,123,214,.6);
           border-radius: 16px;
           padding: .85rem;
           font-family: var(--font-b);
           font-size: .88rem;
           font-weight: 600;
-          color: var(--cream);
+          color: #fff;
           cursor: pointer;
           transition: all .3s cubic-bezier(.4,0,.2,1);
-          box-shadow: 0 2px 8px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.15);
+          box-shadow: 0 2px 12px rgba(30,123,214,.3), inset 0 1px 0 rgba(255,255,255,.15);
           overflow: hidden;
         }
         .glass-submit::before {
@@ -255,18 +253,30 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
           position: absolute;
           inset: 0;
           border-radius: 16px;
-          background: linear-gradient(165deg, rgba(255,255,255,.15), transparent 50%);
+          background: linear-gradient(165deg, rgba(255,255,255,.18), transparent 50%);
           pointer-events: none;
         }
         .glass-submit:hover {
-          background: rgba(255,255,255,.18);
-          border-color: rgba(255,255,255,.3);
+          background: #2388e8;
+          border-color: rgba(30,123,214,.8);
           transform: translateY(-1px);
-          box-shadow: 0 4px 16px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.2);
+          box-shadow: 0 4px 20px rgba(30,123,214,.4), inset 0 1px 0 rgba(255,255,255,.2);
         }
         .glass-submit:active {
           transform: translateY(0);
-          background: rgba(255,255,255,.1);
+          background: #1a6fc0;
+        }
+        .glass-submit:disabled {
+          background: rgba(255,255,255,.12);
+          border-color: rgba(255,255,255,.15);
+          color: var(--cream);
+          box-shadow: 0 2px 8px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.1);
+        }
+        .glass-submit.submitted {
+          background: rgba(255,255,255,.12);
+          border-color: rgba(255,255,255,.2);
+          color: var(--cream);
+          box-shadow: 0 2px 8px rgba(0,0,0,.15);
         }
 
         .glass-close {
@@ -326,28 +336,28 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
             </p>
 
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block mb-[.3rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Ad Soyad</label>
+                  <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Ad Soyad</label>
                   <input type="text" name="name" placeholder="Örn. Ahmet Yılmaz" required className="glass-input" />
                 </div>
                 <div>
-                  <label className="block mb-[.3rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Şirket / Marka Adı</label>
+                  <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Şirket / Marka Adı</label>
                   <input type="text" name="company" placeholder="Örn. ABC Ltd." className="glass-input" />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block mb-[.3rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>E-posta</label>
+                  <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>E-posta</label>
                   <input type="email" name="email" placeholder="ornek@sirket.com" required className="glass-input" />
                 </div>
                 <div>
-                  <label className="block mb-[.3rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Telefon</label>
+                  <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Telefon</label>
                   <input type="tel" name="phone" placeholder="+90 5__ ___ __ __" className="glass-input" />
                 </div>
               </div>
-              <div className="mb-3">
-                <label className="block mb-[.3rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Hangi hizmeti arıyorsunuz?</label>
+              <div className="mb-4">
+                <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Hangi hizmeti arıyorsunuz?</label>
                 <select name="service" required className="glass-select" defaultValue="">
                   <option value="" disabled>Seçiniz</option>
                   <option>Web Tasarım</option>
@@ -358,8 +368,8 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
                   <option>Henüz karar vermedim</option>
                 </select>
               </div>
-              <div className="mb-3">
-                <label className="block mb-[.3rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Tahmini bütçe</label>
+              <div className="mb-4">
+                <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Tahmini bütçe</label>
                 <select name="budget" className="glass-select" defaultValue="">
                   <option value="" disabled>Seçiniz (opsiyonel)</option>
                   <option>Henüz belirlemedim</option>
@@ -369,15 +379,15 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
                   <option>100.000 TL ve üzeri</option>
                 </select>
               </div>
-              <div className="mb-3">
-                <label className="block mb-[.3rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Projenizi kısaca anlatın</label>
+              <div className="mb-4">
+                <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Projenizi kısaca anlatın</label>
                 <textarea name="message" placeholder="Hedefiniz, zamanlamanız, mevcut durumunuz..." rows={2} className="glass-textarea" />
               </div>
-              <div ref={turnstileRef} className="flex justify-center" style={{ margin: "1rem 0 1.2rem", minHeight: 0, borderRadius: 12, overflow: "hidden" }} />
+              <div ref={turnstileRef} className="flex justify-center" style={{ margin: ".6rem 0 1rem", minHeight: 0, borderRadius: 12, overflow: "hidden" }} />
               {error && (
                 <p style={{ fontSize: ".8rem", color: "#ef4444", marginBottom: ".6rem" }}>{error}</p>
               )}
-              <button type="submit" disabled={sending || submitted || !turnstileToken} className="glass-submit" style={{ marginTop: ".6rem", opacity: (sending || !turnstileToken) ? 0.5 : 1 }}>
+              <button type="submit" disabled={sending || submitted || !turnstileToken} className={`glass-submit${submitted ? " submitted" : ""}`} style={{ marginTop: ".4rem", opacity: (sending || (!turnstileToken && !submitted)) ? 0.5 : 1 }}>
                 {submitted ? "Gönderildi!" : sending ? "Gönderiliyor..." : "Gönder"}
               </button>
             </form>

@@ -212,7 +212,7 @@ function ServiceModal({ service, open, onClose }: { service: typeof services[0] 
             </div>
             <div ref={turnstileRef} className="flex justify-center" style={{ margin: ".8rem 0 1rem", minHeight: 0, borderRadius: 12, overflow: "hidden" }} />
             {error && <p style={{ fontSize: ".78rem", color: "#ef4444", marginBottom: ".5rem" }}>{error}</p>}
-            <button type="submit" disabled={sending || submitted || !turnstileToken} className="glass-submit" style={{ fontSize: ".84rem", padding: ".7rem", opacity: (sending || !turnstileToken) ? 0.5 : 1 }}>
+            <button type="submit" disabled={sending || submitted || !turnstileToken} className={`glass-submit${submitted ? " submitted" : ""}`} style={{ fontSize: ".84rem", padding: ".7rem", opacity: (sending || (!turnstileToken && !submitted)) ? 0.5 : 1 }}>
               {submitted ? "Gönderildi!" : sending ? "Gönderiliyor..." : "Formu Gönder"}
             </button>
           </form>
