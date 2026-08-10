@@ -181,23 +181,21 @@ export default function Hero() {
       <style>{`
         @media (max-width: 768px) {
           #merhaba {
-            height: auto !important;
+            height: 88vh !important;
             min-height: 0 !important;
           }
           .hero-center {
-            position: relative !important;
-            padding-top: clamp(4.5rem, 12vh, 6rem) !important;
-            padding-bottom: 1.2rem !important;
+            justify-content: center !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
           }
           .hero-cta {
             padding: .6rem 1.1rem !important;
             font-size: .78rem !important;
           }
           .hero-bottom {
-            position: relative !important;
             gap: .8rem !important;
-            padding-bottom: 4rem !important;
-            padding-top: 0 !important;
+            padding-bottom: clamp(1.5rem, 4vh, 3rem) !important;
           }
         }
       `}</style>
