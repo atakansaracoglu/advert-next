@@ -174,8 +174,9 @@ function ServiceModal({ service, open, onClose }: { service: typeof services[0] 
     <div
       ref={overlayRef}
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-6"
+      className="fixed inset-0 z-[100] flex items-center justify-center"
       style={{
+        padding: "clamp(.75rem, 2vw, 1.5rem)",
         background: "rgba(0,0,0,.45)", backdropFilter: "blur(12px) saturate(120%)", WebkitBackdropFilter: "blur(12px) saturate(120%)",
         opacity: open ? 1 : 0, pointerEvents: open ? "auto" : "none", transition: "opacity .35s cubic-bezier(.4,0,.2,1)",
       }}
@@ -183,7 +184,7 @@ function ServiceModal({ service, open, onClose }: { service: typeof services[0] 
       <div
         className="liquid-glass-panel w-full max-w-[520px] relative max-h-[90vh] overflow-y-auto"
         style={{
-          padding: "2.2rem", transform: open ? "translateY(0) scale(1)" : "translateY(24px) scale(.97)",
+          padding: "clamp(1.4rem, 4vw, 2.2rem)", transform: open ? "translateY(0) scale(1)" : "translateY(24px) scale(.97)",
           transition: "transform .4s cubic-bezier(.16,1,.3,1), opacity .35s",
         }}
       >

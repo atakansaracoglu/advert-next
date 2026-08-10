@@ -52,7 +52,7 @@ export default function Hero() {
       />
 
       {/* Center content */}
-      <div className="absolute inset-0 z-[3] flex flex-col items-center justify-center text-center"
+      <div className="hero-center absolute inset-0 z-[3] flex flex-col items-center justify-center text-center"
         style={{ padding: "0 clamp(1.5rem,4vw,4rem)" }}
       >
         {/* Main heading */}
@@ -94,7 +94,7 @@ export default function Hero() {
         <div className="rise rise-d7 flex items-center gap-3" style={{ marginTop: "1.4rem" }}>
           <a
             href="#bize-ulasin"
-            className="inline-flex items-center gap-2.5 rounded-full text-white no-underline cursor-pointer transition-all duration-300 hover:-translate-y-px"
+            className="hero-cta inline-flex items-center gap-2 rounded-full text-white no-underline cursor-pointer transition-all duration-300 hover:-translate-y-px"
             style={{
               padding: "0.7rem 1.5rem",
               background: "#1e7bd6",
@@ -102,6 +102,7 @@ export default function Hero() {
               fontSize: "0.84rem",
               fontWeight: 500,
               letterSpacing: "0.01em",
+              whiteSpace: "nowrap",
             }}
           >
             Hemen Başlayın
@@ -121,7 +122,7 @@ export default function Hero() {
           </a>
           <a
             href="#hizmetlerimiz"
-            className="inline-flex items-center gap-2 rounded-full text-[var(--cream)] no-underline cursor-pointer transition-all duration-300 hover:-translate-y-px"
+            className="hero-cta inline-flex items-center gap-2 rounded-full text-[var(--cream)] no-underline cursor-pointer transition-all duration-300 hover:-translate-y-px"
             style={{
               padding: "0.7rem 1.5rem",
               background: "rgba(243,239,230,0.06)",
@@ -132,6 +133,7 @@ export default function Hero() {
               letterSpacing: "0.01em",
               backdropFilter: "blur(16px)",
               WebkitBackdropFilter: "blur(16px)",
+              whiteSpace: "nowrap",
             }}
           >
             Hizmetlerimiz
@@ -141,8 +143,8 @@ export default function Hero() {
 
       {/* Bottom bar: Advert. left, description right */}
       <div
-        className="absolute bottom-0 left-0 right-0 z-[4] flex justify-between items-end gap-12 w-full max-md:flex-col max-md:items-start max-md:gap-6"
-        style={{ padding: "0 clamp(1.5rem,4vw,4rem) clamp(2rem,4.5vh,3.5rem)" }}
+        className="hero-bottom absolute bottom-0 left-0 right-0 z-[4] flex justify-between items-end gap-12 w-full max-md:flex-col max-md:items-start max-md:gap-4"
+        style={{ padding: "0 clamp(1.5rem,4vw,4rem) clamp(1.5rem,3.5vh,3.5rem)" }}
       >
         <div className="flex-1 min-w-0">
           <h2
@@ -150,7 +152,7 @@ export default function Hero() {
             style={{
               fontFamily: "var(--font-d)",
               fontWeight: 500,
-              fontSize: "clamp(64px, 13vw, 180px)",
+              fontSize: "clamp(52px, 13vw, 180px)",
               lineHeight: 0.86,
               letterSpacing: "-0.045em",
               color: "var(--cream)",
@@ -163,7 +165,7 @@ export default function Hero() {
           <p
             className="rise rise-d6"
             style={{
-              fontSize: "0.92rem",
+              fontSize: "clamp(0.82rem, 2.2vw, 0.92rem)",
               lineHeight: 1.68,
               color: "var(--cream-70)",
               maxWidth: 350,
@@ -175,6 +177,23 @@ export default function Hero() {
           </p>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-center {
+            justify-content: flex-start !important;
+            padding-top: clamp(6rem, 18vh, 9rem) !important;
+          }
+          .hero-cta {
+            padding: .6rem 1.1rem !important;
+            font-size: .78rem !important;
+          }
+          .hero-bottom {
+            gap: .8rem !important;
+            padding-bottom: 5.5rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

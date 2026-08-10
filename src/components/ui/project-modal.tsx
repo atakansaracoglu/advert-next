@@ -297,8 +297,9 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
       <div
         ref={overlayRef}
         onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
-        className="fixed inset-0 z-[100] flex items-center justify-center p-6"
+        className="fixed inset-0 z-[100] flex items-center justify-center"
         style={{
+          padding: "clamp(.75rem, 2vw, 1.5rem)",
           background: "rgba(0,0,0,.45)",
           backdropFilter: "blur(12px) saturate(120%)",
           WebkitBackdropFilter: "blur(12px) saturate(120%)",
@@ -311,7 +312,7 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
         <div
           className="liquid-glass-panel w-full max-w-[540px] relative max-h-[90vh] overflow-y-auto"
           style={{
-            padding: "2.4rem",
+            padding: "clamp(1.4rem, 4vw, 2.4rem)",
             animation: open ? "glassSlideUp .5s cubic-bezier(.16,1,.3,1)" : "none",
             transform: open ? "translateY(0) scale(1)" : "translateY(24px) scale(.97)",
             transition: "transform .4s cubic-bezier(.4,0,.2,1), opacity .35s",
@@ -336,28 +337,28 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
             </p>
 
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "1rem", marginBottom: "1.5rem" }}>
+              <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "clamp(.6rem, 2vw, 1rem)", marginBottom: "clamp(.8rem, 2.5vw, 1.5rem)" }}>
                 <div>
-                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Ad Soyad</label>
+                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: "clamp(.35rem, 1vw, .65rem)" }}>Ad Soyad</label>
                   <input type="text" name="name" placeholder="Örn. Ahmet Yılmaz" required className="glass-input" />
                 </div>
                 <div>
-                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Şirket / Marka Adı</label>
+                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: "clamp(.35rem, 1vw, .65rem)" }}>Şirket / Marka Adı</label>
                   <input type="text" name="company" placeholder="Örn. ABC Ltd." className="glass-input" />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "1rem", marginBottom: "1.5rem" }}>
+              <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "clamp(.6rem, 2vw, 1rem)", marginBottom: "clamp(.8rem, 2.5vw, 1.5rem)" }}>
                 <div>
-                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>E-posta</label>
+                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: "clamp(.35rem, 1vw, .65rem)" }}>E-posta</label>
                   <input type="email" name="email" placeholder="ornek@sirket.com" required className="glass-input" />
                 </div>
                 <div>
-                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Telefon</label>
+                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: "clamp(.35rem, 1vw, .65rem)" }}>Telefon</label>
                   <input type="tel" name="phone" placeholder="+90 5__ ___ __ __" className="glass-input" />
                 </div>
               </div>
-              <div style={{ marginBottom: "1.5rem" }}>
-                <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Hangi hizmeti arıyorsunuz?</label>
+              <div style={{ marginBottom: "clamp(.8rem, 2.5vw, 1.5rem)" }}>
+                <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: "clamp(.35rem, 1vw, .65rem)" }}>Hangi hizmeti arıyorsunuz?</label>
                 <select name="service" required className="glass-select" defaultValue="">
                   <option value="" disabled>Seçiniz</option>
                   <option>Web Tasarım</option>
@@ -368,8 +369,8 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
                   <option>Henüz karar vermedim</option>
                 </select>
               </div>
-              <div style={{ marginBottom: "1.5rem" }}>
-                <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Tahmini bütçe</label>
+              <div style={{ marginBottom: "clamp(.8rem, 2.5vw, 1.5rem)" }}>
+                <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: "clamp(.35rem, 1vw, .65rem)" }}>Tahmini bütçe</label>
                 <select name="budget" className="glass-select" defaultValue="">
                   <option value="" disabled>Seçiniz (opsiyonel)</option>
                   <option>Henüz belirlemedim</option>
@@ -379,8 +380,8 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
                   <option>100.000 TL ve üzeri</option>
                 </select>
               </div>
-              <div style={{ marginBottom: "1.5rem" }}>
-                <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Projenizi kısaca anlatın</label>
+              <div style={{ marginBottom: "clamp(.8rem, 2.5vw, 1.5rem)" }}>
+                <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: "clamp(.35rem, 1vw, .65rem)" }}>Projenizi kısaca anlatın</label>
                 <textarea name="message" placeholder="Hedefiniz, zamanlamanız, mevcut durumunuz..." rows={2} className="glass-textarea" />
               </div>
               <div ref={turnstileRef} className="flex justify-center" style={{ margin: ".6rem 0 1rem", minHeight: 0, borderRadius: 12, overflow: "hidden" }} />
