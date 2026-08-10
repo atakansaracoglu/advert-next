@@ -3,10 +3,23 @@ import nodemailer from "nodemailer";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, company, email, phone, service, budget, message } = body;
+    const { name, company, email, phone, service, budget, message, turnstileToken } = body;
 
     if (!name || !email || !service) {
       return Response.json({ error: "Gerekli alanları doldurun." }, { status: 400 });
+    }
+
+    const tsRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        secret: process.env.TURNSTILE_SECRET!,
+        response: turnstileToken || "",
+      }),
+    });
+    const tsData = await tsRes.json();
+    if (!tsData.success) {
+      return Response.json({ error: "Bot doğrulaması başarısız." }, { status: 403 });
     }
 
     const transporter = nodemailer.createTransport({

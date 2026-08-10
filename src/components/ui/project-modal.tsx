@@ -1,12 +1,44 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+
+const TURNSTILE_SITE_KEY = "0x4AAAAAAEMOh3xANclpxp1R";
 
 export default function ProjectModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const turnstileRef = useRef<HTMLDivElement>(null);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileWidgetId = useRef<string | null>(null);
+
+  const renderTurnstile = useCallback(() => {
+    if (!turnstileRef.current || !(window as any).turnstile) return;
+    if (turnstileWidgetId.current) {
+      (window as any).turnstile.reset(turnstileWidgetId.current);
+      return;
+    }
+    turnstileWidgetId.current = (window as any).turnstile.render(turnstileRef.current, {
+      sitekey: TURNSTILE_SITE_KEY,
+      theme: "dark",
+      callback: (token: string) => setTurnstileToken(token),
+      "expired-callback": () => setTurnstileToken(""),
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    if ((window as any).turnstile) {
+      setTimeout(renderTurnstile, 100);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    script.async = true;
+    script.onload = () => setTimeout(renderTurnstile, 100);
+    document.head.appendChild(script);
+  }, [open, renderTurnstile]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -41,11 +73,16 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
       if (!res.ok) throw new Error("Gönderilemedi");
       setSubmitted(true);
-      setTimeout(() => { onClose(); setSubmitted(false); form.reset(); }, 1500);
+      setTimeout(() => {
+        onClose(); setSubmitted(false); setTurnstileToken(""); form.reset();
+        if (turnstileWidgetId.current && (window as any).turnstile) {
+          (window as any).turnstile.reset(turnstileWidgetId.current);
+        }
+      }, 1500);
     } catch {
       setError("Bir hata oluştu, lütfen tekrar deneyin.");
     } finally {
@@ -334,10 +371,11 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
                 <label className="block mb-[.45rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Projenizi kısaca anlatın</label>
                 <textarea name="message" placeholder="Hedefiniz, zamanlamanız, mevcut durumunuz..." rows={4} className="glass-textarea" />
               </div>
+              <div ref={turnstileRef} className="mb-4 flex justify-center" style={{ minHeight: 65 }} />
               {error && (
                 <p style={{ fontSize: ".8rem", color: "#ef4444", marginBottom: ".6rem" }}>{error}</p>
               )}
-              <button type="submit" disabled={sending || submitted} className="glass-submit" style={{ marginTop: ".6rem", opacity: sending ? 0.6 : 1 }}>
+              <button type="submit" disabled={sending || submitted || !turnstileToken} className="glass-submit" style={{ marginTop: ".6rem", opacity: (sending || !turnstileToken) ? 0.5 : 1 }}>
                 {submitted ? "Gönderildi!" : sending ? "Gönderiliyor..." : "Gönder"}
               </button>
             </form>
