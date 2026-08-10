@@ -202,8 +202,8 @@ function ServiceModal({ service, open, onClose }: { service: typeof services[0] 
 
           <div style={{ height: 1, background: "rgba(255,255,255,.08)", marginBottom: "1.5rem" }} />
 
-          <p style={{ fontFamily: "var(--font-d)", fontWeight: 500, fontSize: ".92rem", color: "var(--cream)", marginBottom: ".3rem" }}>Örnek çalışmalarımızı inceleyin</p>
-          <p style={{ fontSize: ".78rem", color: "rgba(243,239,230,.4)", marginBottom: "1.2rem" }}>Bilgilerinizi bırakın, sizi arayalım.</p>
+          <p style={{ fontFamily: "var(--font-d)", fontWeight: 500, fontSize: ".92rem", color: "var(--cream)", marginBottom: ".3rem" }}>Örnek çalışmalarımızı incelemek için</p>
+          <p style={{ fontSize: ".78rem", color: "rgba(243,239,230,.4)", marginBottom: "1.2rem" }}>Bilgilerinizi bırakın, sizinle paylaşalım.</p>
 
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-3 mb-3">
