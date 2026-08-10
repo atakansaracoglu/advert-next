@@ -336,28 +336,28 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
             </p>
 
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "1rem", marginBottom: "1.5rem" }}>
                 <div>
-                  <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Ad Soyad</label>
+                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Ad Soyad</label>
                   <input type="text" name="name" placeholder="Örn. Ahmet Yılmaz" required className="glass-input" />
                 </div>
                 <div>
-                  <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Şirket / Marka Adı</label>
+                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Şirket / Marka Adı</label>
                   <input type="text" name="company" placeholder="Örn. ABC Ltd." className="glass-input" />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "1rem", marginBottom: "1.5rem" }}>
                 <div>
-                  <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>E-posta</label>
+                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>E-posta</label>
                   <input type="email" name="email" placeholder="ornek@sirket.com" required className="glass-input" />
                 </div>
                 <div>
-                  <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Telefon</label>
+                  <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Telefon</label>
                   <input type="tel" name="phone" placeholder="+90 5__ ___ __ __" className="glass-input" />
                 </div>
               </div>
-              <div className="mb-4">
-                <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Hangi hizmeti arıyorsunuz?</label>
+              <div style={{ marginBottom: "1.5rem" }}>
+                <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Hangi hizmeti arıyorsunuz?</label>
                 <select name="service" required className="glass-select" defaultValue="">
                   <option value="" disabled>Seçiniz</option>
                   <option>Web Tasarım</option>
@@ -368,8 +368,8 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
                   <option>Henüz karar vermedim</option>
                 </select>
               </div>
-              <div className="mb-4">
-                <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Tahmini bütçe</label>
+              <div style={{ marginBottom: "1.5rem" }}>
+                <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Tahmini bütçe</label>
                 <select name="budget" className="glass-select" defaultValue="">
                   <option value="" disabled>Seçiniz (opsiyonel)</option>
                   <option>Henüz belirlemedim</option>
@@ -379,8 +379,8 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
                   <option>100.000 TL ve üzeri</option>
                 </select>
               </div>
-              <div className="mb-4">
-                <label className="block mb-[.5rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Projenizi kısaca anlatın</label>
+              <div style={{ marginBottom: "1.5rem" }}>
+                <label className="block" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)", marginBottom: ".65rem" }}>Projenizi kısaca anlatın</label>
                 <textarea name="message" placeholder="Hedefiniz, zamanlamanız, mevcut durumunuz..." rows={2} className="glass-textarea" />
               </div>
               <div ref={turnstileRef} className="flex justify-center" style={{ margin: ".6rem 0 1rem", minHeight: 0, borderRadius: 12, overflow: "hidden" }} />
