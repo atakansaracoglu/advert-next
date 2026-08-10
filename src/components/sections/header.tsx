@@ -13,7 +13,7 @@ const navLinks = [
 const socials = [
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/advert.com.tr",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px]">
         <path d="M9.198 21.5h4v-8.01h3.604l.396-3.98h-4V7.5a1 1 0 011-1h3v-4h-3a5 5 0 00-5 5v2.01h-2l-.396 3.98h2.396v8.01z" />
@@ -22,7 +22,7 @@ const socials = [
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/advert.com.tr",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="w-[15px] h-[15px]">
         <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -33,7 +33,7 @@ const socials = [
   },
   {
     label: "TikTok",
-    href: "#",
+    href: "https://tiktok.com/@advert.com.tr",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px]">
         <path d="M16.6 5.82A4.28 4.28 0 0115.54 3h-3.09v12.4a2.59 2.59 0 01-2.59 2.5c-1.43 0-2.59-1.16-2.59-2.59a2.59 2.59 0 012.59-2.59c.28 0 .55.04.8.12V9.6a5.73 5.73 0 00-.8-.06A5.82 5.82 0 004 15.4a5.82 5.82 0 005.86 5.78 5.82 5.82 0 005.86-5.78V9.73a7.35 7.35 0 004.28 1.37V8.01a4.28 4.28 0 01-3.4-2.19z" />
@@ -42,7 +42,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/advertcomtr/",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-[15px] h-[15px]">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -122,6 +122,8 @@ export default function Header({ onOpenModal }: { onOpenModal: () => void }) {
                 <a
                   key={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener"
                   aria-label={s.label}
                   className="flex items-center justify-center w-[28px] h-[28px] text-[var(--cream-46)] transition-all duration-300 hover:text-[var(--cream)]"
                   style={{ animation: `headerSlideIn .9s cubic-bezier(.16,1,.3,1) ${0.12 + i * 0.04}s both` }}
@@ -263,6 +265,8 @@ export default function Header({ onOpenModal }: { onOpenModal: () => void }) {
                 <a
                   key={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener"
                   aria-label={s.label}
                   className="flex items-center justify-center w-[44px] h-[44px] text-[var(--cream-46)] transition-colors duration-300 hover:text-[var(--cream)]"
                 >

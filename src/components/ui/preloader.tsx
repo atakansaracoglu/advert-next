@@ -9,13 +9,13 @@ export default function Preloader() {
   const [removed, setRemoved] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setExit(true), 2400);
+    const timer = setTimeout(() => setExit(true), 1400);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     if (!exit) return;
-    const timer = setTimeout(() => setRemoved(true), 1300);
+    const timer = setTimeout(() => setRemoved(true), 800);
     return () => clearTimeout(timer);
   }, [exit]);
 
@@ -46,7 +46,7 @@ export default function Preloader() {
         className="fixed inset-0 z-[100] flex items-center justify-center"
         style={{
           background: "var(--base)",
-          transition: "transform .9s cubic-bezier(.76,0,.18,1), opacity .4s .5s",
+          transition: "transform .65s cubic-bezier(.76,0,.18,1), opacity .3s .3s",
           transform: exit ? "translateY(-100%)" : "translateY(0)",
           opacity: exit ? 0 : 1,
         }}
@@ -68,7 +68,7 @@ export default function Preloader() {
               style={{
                 opacity: 0,
                 transform: "translateY(110%)",
-                animation: `pl-letter-in .65s cubic-bezier(.16,1,.3,1) ${0.15 + i * 0.07}s forwards`,
+                animation: `pl-letter-in .5s cubic-bezier(.16,1,.3,1) ${0.08 + i * 0.05}s forwards`,
               }}
             >
               {letter}
@@ -84,7 +84,7 @@ export default function Preloader() {
               marginBottom: ".12em",
               opacity: 0,
               transform: "scale(0)",
-              animation: "pl-dot-in .5s cubic-bezier(.34,1.56,.64,1) .7s forwards",
+              animation: "pl-dot-in .4s cubic-bezier(.34,1.56,.64,1) .42s forwards",
             }}
           />
         </div>
@@ -98,7 +98,7 @@ export default function Preloader() {
             width: "clamp(120px,22vw,200px)",
             height: 1,
             background: "linear-gradient(90deg,transparent,var(--cream-46),transparent)",
-            animation: "pl-line-in .6s cubic-bezier(.16,1,.3,1) .9s forwards",
+            animation: "pl-line-in .5s cubic-bezier(.16,1,.3,1) .55s forwards",
             transformOrigin: "center",
           }}
         />
@@ -115,7 +115,7 @@ export default function Preloader() {
             textTransform: "uppercase",
             color: "var(--cream-46)",
             opacity: 0,
-            animation: "pl-fade .5s ease 1.1s forwards",
+            animation: "pl-fade .4s ease .7s forwards",
           }}
         >
           INTELLIGENCE, REDEFINED.

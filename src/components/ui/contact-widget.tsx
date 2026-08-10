@@ -73,7 +73,7 @@ export default function ContactWidget() {
         {/* Toggle button */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="flex items-center gap-[.6rem] rounded-[28px] cursor-pointer relative transition-all duration-250 max-md:rounded-full max-md:w-12 max-md:h-12 max-md:justify-center max-md:p-[.5rem]"
+          className="flex items-center gap-[.6rem] rounded-[28px] cursor-pointer relative transition-all duration-250 max-md:rounded-full max-md:w-12 max-md:h-12 max-md:justify-center max-md:!p-0"
           style={{
             padding: ".45rem .9rem .45rem .45rem",
             border: "1px solid var(--cream-16)",
@@ -104,7 +104,7 @@ export default function ContactWidget() {
           >
             <polyline points="9 6 15 12 9 18" />
           </svg>
-          <svg viewBox="0 0 24 24" className="w-5 h-5 hidden max-md:block" style={{ stroke: "var(--cream)", strokeWidth: 1.8, fill: "none" }} strokeLinecap="round" strokeLinejoin="round">
+          <svg viewBox="0 0 24 24" className="w-5 h-5 hidden max-md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ stroke: "var(--cream)", strokeWidth: 1.8, fill: "none" }} strokeLinecap="round" strokeLinejoin="round">
             <rect x="2" y="4" width="20" height="16" rx="2" />
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
           </svg>
