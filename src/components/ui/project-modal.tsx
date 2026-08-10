@@ -22,6 +22,8 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
     turnstileWidgetId.current = (window as any).turnstile.render(turnstileRef.current, {
       sitekey: TURNSTILE_SITE_KEY,
       theme: "dark",
+      size: "flexible",
+      appearance: "interaction-only",
       callback: (token: string) => setTurnstileToken(token),
       "expired-callback": () => setTurnstileToken(""),
     });
@@ -371,7 +373,7 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
                 <label className="block mb-[.45rem]" style={{ fontSize: ".74rem", fontWeight: 500, letterSpacing: ".01em", color: "rgba(243,239,230,.6)" }}>Projenizi kısaca anlatın</label>
                 <textarea name="message" placeholder="Hedefiniz, zamanlamanız, mevcut durumunuz..." rows={4} className="glass-textarea" />
               </div>
-              <div ref={turnstileRef} className="mb-4 flex justify-center" style={{ minHeight: 65 }} />
+              <div ref={turnstileRef} className="flex justify-center" style={{ margin: "1rem 0 1.2rem", minHeight: 0, borderRadius: 12, overflow: "hidden" }} />
               {error && (
                 <p style={{ fontSize: ".8rem", color: "#ef4444", marginBottom: ".6rem" }}>{error}</p>
               )}

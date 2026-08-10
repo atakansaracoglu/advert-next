@@ -124,6 +124,7 @@ function ServiceModal({ service, open, onClose }: { service: typeof services[0] 
     }
     turnstileWidgetId.current = (window as any).turnstile.render(turnstileRef.current, {
       sitekey: TURNSTILE_SITE_KEY, theme: "dark",
+      size: "flexible", appearance: "interaction-only",
       callback: (token: string) => setTurnstileToken(token),
       "expired-callback": () => setTurnstileToken(""),
     });
@@ -209,7 +210,7 @@ function ServiceModal({ service, open, onClose }: { service: typeof services[0] 
               <input type="text" name="svc_name" placeholder="Ad Soyad" required className="glass-input" style={{ fontSize: ".82rem" }} />
               <input type="tel" name="svc_phone" placeholder="+90 5__ ___ __ __" required className="glass-input" style={{ fontSize: ".82rem" }} />
             </div>
-            <div ref={turnstileRef} className="mb-3 flex justify-center" style={{ minHeight: 65 }} />
+            <div ref={turnstileRef} className="flex justify-center" style={{ margin: ".8rem 0 1rem", minHeight: 0, borderRadius: 12, overflow: "hidden" }} />
             {error && <p style={{ fontSize: ".78rem", color: "#ef4444", marginBottom: ".5rem" }}>{error}</p>}
             <button type="submit" disabled={sending || submitted || !turnstileToken} className="glass-submit" style={{ fontSize: ".84rem", padding: ".7rem", opacity: (sending || !turnstileToken) ? 0.5 : 1 }}>
               {submitted ? "Gönderildi!" : sending ? "Gönderiliyor..." : "Formu Gönder"}
