@@ -12,11 +12,13 @@ import Contact from "@/components/sections/contact";
 import Footer from "@/components/sections/footer";
 import ContactWidget from "@/components/ui/contact-widget";
 import ProjectModal from "@/components/ui/project-modal";
+import LegalModal from "@/components/ui/legal-modal";
 import Preloader from "@/components/ui/preloader";
 import ScrollToTop from "@/components/ui/scroll-to-top";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [legalType, setLegalType] = useState<"privacy" | "terms" | null>(null);
   useReveal();
 
   return (
@@ -31,12 +33,16 @@ export default function Home() {
           <Testimonials />
           <Projects />
           <Contact />
-          <Footer />
+          <Footer
+            onOpenPrivacy={() => setLegalType("privacy")}
+            onOpenTerms={() => setLegalType("terms")}
+          />
         </div>
       </div>
       <ContactWidget />
       <ScrollToTop />
       <ProjectModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <LegalModal type={legalType} open={!!legalType} onClose={() => setLegalType(null)} />
     </>
   );
 }
