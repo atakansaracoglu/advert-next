@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="merhaba"
-      className="relative h-screen min-h-[600px] flex flex-col overflow-hidden"
+      className="relative h-screen max-md:h-auto min-h-[600px] max-md:min-h-0 flex flex-col overflow-hidden"
     >
       {/* LightTunnel background */}
       <div className="absolute inset-0 z-[1]">
@@ -180,17 +180,24 @@ export default function Hero() {
 
       <style>{`
         @media (max-width: 768px) {
+          #merhaba {
+            height: auto !important;
+            min-height: 0 !important;
+          }
           .hero-center {
-            justify-content: flex-start !important;
-            padding-top: clamp(6rem, 18vh, 9rem) !important;
+            position: relative !important;
+            padding-top: clamp(4.5rem, 12vh, 6rem) !important;
+            padding-bottom: 1.2rem !important;
           }
           .hero-cta {
             padding: .6rem 1.1rem !important;
             font-size: .78rem !important;
           }
           .hero-bottom {
+            position: relative !important;
             gap: .8rem !important;
-            padding-bottom: 5.5rem !important;
+            padding-bottom: 4rem !important;
+            padding-top: 0 !important;
           }
         }
       `}</style>
