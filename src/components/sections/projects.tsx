@@ -1,221 +1,145 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { LogoCloud } from "@/components/ui/logo-cloud";
 
-const slides = [
-  { image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=800&fit=crop&q=80", title: "Kurumsal Web Sitesi", desc: "SEO uyumlu, mobil öncelikli tasarımlarla markaları dijitale taşıyoruz.", badge: "Web Tasarım" },
-  { image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=800&fit=crop&q=80", title: "CRM Otomasyon Sistemi", desc: "İş süreçlerini yapay zeka ile otomatikleştiren akıllı altyapılar.", badge: "Otomasyon" },
-  { image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=800&fit=crop&q=80", title: "Marka Tanıtım Filmi", desc: "Drone çekimi, animasyon ve kurguyla markanızın hikâyesini anlatıyoruz.", badge: "Video" },
-  { image: "https://images.unsplash.com/photo-1563986768609-322da13575f2?w=600&h=800&fit=crop&q=80", title: "Google Ads Kampanyası", desc: "Veriye dayalı stratejilerle reklam yatırımından maksimum geri dönüş.", badge: "Reklam" },
-  { image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=800&fit=crop&q=80", title: "Sosyal Medya Yönetimi", desc: "İçerik üretimi, topluluk yönetimi ve performans analiziyle büyüme.", badge: "Sosyal Medya" },
+const logos = [
+  {
+    name: "McDonald's",
+    svg: (
+      <svg viewBox="0 0 313.95 274.7" style={{ height: 36, width: "auto" }}>
+        <path
+          d="M225.66,19.62c27.09,0,49,114.21,49,255.08h39.29c0-151.71-39.53-274.7-88.29-274.7-27.74,0-52.49,37-68.68,94.76C140.8,37,116.04,0,88.3,0,39.55,0,0,123,0,274.7H39.25c0-140.87,22-255.08,49-255.08s49.07,105.42,49.07,235.45h39.24c0-130,22-235.45,49.06-235.45"
+          fill="currentColor"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "Trendyol",
+    svg: (
+      <svg viewBox="0 0 620 211" style={{ height: 22, width: "auto" }}>
+        <g fill="currentColor">
+          <path d="M15.736,165.674c0.659,2.708,1.537,4.904,2.562,6.588c1.024,1.683,2.342,3.146,3.879,4.537c5.05,4.392,11.418,6.66,18.957,6.66c7.465,0,14.492-1.83,20.859-5.343v-15.224c-6.587,3.879-12.881,5.855-18.81,5.855c-8.051,0-12.223-4.904-12.223-14.639V112.61h26.714V97.899H31.033V70.672H15.297v27.154H0v14.711h14.638v37.62C14.638,157.77,15.004,162.966,15.736,165.674z" />
+          <path d="M111.982,111.806c4.904,0,10.32,2.708,16.102,8.124l8.637-14.346c-7.026-6.44-15.517-9.368-20.494-9.368h-1.098c-5.709,0-15.224,0-22.982,12.589l-0.293,0.512l0.073-11.417H75.46v84.023h16.468v-43.914c0-7.026,1.976-13.174,5.929-18.371C101.809,114.44,106.566,111.806,111.982,111.806z" />
+          <path d="M221.695,146.863h-70.19c3.22,13.175,13.906,23.129,27.813,23.129c7.831,0,15.516-3.367,20.64-9.148l16.98,0.365c-7.466,14.199-21.738,23.275-38.279,23.275c-24.153,0-43.11-20.934-43.11-44.646c0-24.446,18.664-44.5,43.476-44.5c24.007,0,43.183,19.762,43.183,43.622C222.134,141.521,221.988,144.303,221.695,146.863z M178.805,109.829c-13.76,0-26.495,10.833-27.373,24.812h54.747C205.3,120.734,192.638,109.829,178.805,109.829z" />
+          <path d="M292.032,182.361v-46.037c0-14.346-4.318-26.495-21.152-26.495c-15.589,0-22.323,12.077-22.323,26.349v46.184h-15.882V97.606h14.858v9.003h0.292c6.148-8.125,15.004-11.345,24.812-11.345c12.076,0,23.421,4.757,30.008,15.151c4.099,6.44,5.343,14.198,5.343,21.737v50.209H292.032z" />
+          <path d="M392.522,182.361v-12.076h-0.292c-7.027,9.807-18.225,14.199-30.009,14.199c-25.397,0-44.062-18.957-44.062-44.207c0-25.398,18.371-45.013,44.062-45.013c10.687,0,22.03,4.099,28.765,12.662h0.292V69.135h15.883v113.226H392.522z M363.1,109.829c-16.834,0-29.057,13.761-29.057,30.302c0,15.882,12.735,29.861,28.91,29.861c16.541,0,29.496-13.467,29.496-29.861C392.522,123.15,380.446,109.829,363.1,109.829z" />
+          <path d="M453.198,210.687H436.73l12.369-30.009l-33.814-83.071h17.127l24.958,65.798l25.543-65.798h17.127L453.198,210.687z" />
+          <path d="M545.346,184.484c-24.958,0-45.745-20.055-45.745-45.159c0-24.958,21.299-44.061,45.745-44.061c24.812,0,45.744,19.25,45.744,44.354C591.09,163.844,571.035,184.484,545.346,184.484z M545.346,109.829c-16.542,0-29.862,13.468-29.862,30.009s13.32,30.154,29.862,30.154c16.688,0,29.861-13.76,29.861-30.301C575.134,123.15,561.813,109.829,545.346,109.829z" />
+          <path d="M604.044,182.361V69.135H620v113.226H604.044z" />
+        </g>
+      </svg>
+    ),
+  },
+  {
+    name: "Apple",
+    svg: (
+      <svg viewBox="0 0 32 32" style={{ height: 32, width: "auto" }}>
+        <g transform="matrix(.036771 0 0 .036771 3 0)" fill="currentColor">
+          <path d="M591.8 462.4c-1-110.1 90-163 94.1-165.6-51.2-74.9-130.8-85.1-159.2-86.3-67.7-6.9-132.2 39.9-166.6 39.9s-87.4-38.9-143.6-37.8c-73.9 1.1-142 42.9-180.1 109.1-76.7 133-19.6 330.3 55.2 438.4 36.6 52.8 80.1 112.3 137.4 110.1 55.2-2.2 76-35.7 142.6-35.7s85.4 35.7 143.6 34.6c59.3-1.2 96.9-54 133.2-107 41.9-61.3 59.2-120.7 60.2-123.8-1.3-.5-115.6-44.3-116.8-175.9" />
+          <path d="M482.3 139c30.4-36.8 50.9-88 45.3-139-43.8 1.8-96.8 29.2-128.2 66-28.1 32.5-52.8 84.6-46.1 134.6 48.7 3.8 98.6-24.9 129-61.6" />
+        </g>
+      </svg>
+    ),
+  },
+  {
+    name: "MINI",
+    svg: (
+      <svg viewBox="0 0 500 219.323" style={{ height: 32, width: "auto" }}>
+        <g fill="currentColor">
+          <path d="m314.3591 85.0631v49.1214h11.0279v-49.1214z" />
+          <path d="m259.667 85.0631v49.1214h10.2458v-32.0319l22.0191 32.0319h11.0655v-49.1214h-10.2455v32.8029l-22.3534-32.8029z" />
+          <path d="m238.0595 85.0631v49.1214h11.0277v-49.1214z" />
+          <path d="m174.6131 85.0631v49.1214h10.244v-38.6665l10.8055 38.6665h10.6177l10.8417-38.6665v38.6665h10.2458v-49.1214h-16.5424l-9.798 33.507-9.9098-33.507z" />
+          <path d="m250 0a109.6238 109.6238 0 0 0-92.3926 50.65234h-157.6074l15.68945 15.68946h133.7304a109.6238 109.6238 0 0 0-6.0195 18.28125h-109.4316l15.5 15.49805h91.39455a109.6238 109.6238 0 0 0-0.4863 9.5039 109.6238 109.6238 0 0 0 0.4375 8.7773h-73.0645l15.49805 15.4981h59.95115a109.6238 109.6238 0 0 0 5.7813 18.2793h-47.4532l15.6895 15.6914h40.0684a109.6238 109.6238 0 0 0 92.7148 51.3769 109.6238 109.6238 0 0 0 92.7148-51.3769h40.0664l15.6915-15.6914h-47.4532a109.6238 109.6238 0 0 0 5.7813-18.2793h59.9512l15.498-15.4981h-73.0645a109.6238 109.6238 0 0 0 0.4375-8.7773 109.6238 109.6238 0 0 0-0.4843-9.5039h91.3925l15.5-15.49805h-109.4316a109.6238 109.6238 0 0 0-6.0195-18.28125h133.7304l15.6895-15.68946h-157.6074a109.6238 109.6238 0 0 0-92.3926-50.65234zm0 14.85938a94.76514 94.76514 0 0 1 94.7637 94.76562 94.76514 94.76514 0 0 1-94.7637 94.7656 94.76514 94.76514 0 0 1-94.7656-94.7656 94.76514 94.76514 0 0 1 94.7656-94.76562z" />
+        </g>
+      </svg>
+    ),
+  },
+  {
+    name: "Audi",
+    svg: (
+      <svg viewBox="0 0 264.58333 93.417766" style={{ height: 28, width: "auto" }}>
+        <path
+          fill="currentColor"
+          d="m 217.27171,0 c -10.54715,0 -20.34094,3.46549 -28.32665,9.3418 -7.98576,-5.87631 -17.77956,-9.3418 -28.32671,-9.3418 -10.54715,0 -20.341,3.46549 -28.32671,9.3418 -7.98571,-5.87631 -17.62882,-9.3418 -28.32666,-9.3418 -10.547205,0 -20.340999,3.46549 -28.326706,9.3418 C 67.80363,3.46549 58.00978,0 48.31156,0 22.24499,0 1,20.94368 1,46.70889 c 0,25.76526 21.24499,46.70894 47.311564,46.70894 10.54721,0 20.341004,-3.46555 28.32671,-9.3418 7.985707,5.87625 17.779501,9.3418 28.326706,9.3418 10.54716,0 20.34095,-3.46555 28.32666,-9.3418 7.83508,5.87625 17.62887,9.3418 28.32671,9.3418 10.54715,0 20.34095,-3.46555 28.32671,-9.3418 7.83502,5.87625 17.62882,9.3418 28.32665,9.3418 26.06658,0 47.31162,-20.94368 47.31162,-46.70894 0,-25.76521 -21.24504,-46.70889 -47.31162,-46.70889 z m -28.32665,70.81675 c -5.72563,-6.47899 -9.19112,-14.91675 -9.19112,-24.10786 0,-9.19112 3.46549,-17.62882 9.19112,-24.10781 5.72557,6.47899 9.19106,14.91669 9.19106,24.10781 0,9.19111 -3.46549,17.62887 -9.19106,24.10786 z m -56.65342,0 c -5.72557,-6.47899 -9.19112,-14.91675 -9.19112,-24.10786 0,-9.19112 3.46555,-17.62882 9.19112,-24.10781 5.72563,6.47899 9.19112,14.91669 9.19112,24.10781 0,9.19111 -3.46549,17.62887 -9.19112,24.10786 z m -56.653366,0 c -5.725626,-6.47899 -9.191116,-14.91675 -9.191116,-24.10786 0,-9.19112 3.46549,-17.62882 9.191116,-24.10781 5.725627,6.47899 9.191117,14.91669 9.191117,24.10781 0.150911,9.19111 -3.46549,17.62887 -9.191117,24.10786 z M 10.7937934,46.70889 c 0,-20.34095 16.8754566,-36.9151 37.5177706,-36.9151 7.684397,0 14.916744,2.26014 20.94368,6.32831 -7.232347,8.13639 -11.60188,18.83422 -11.60188,30.58679 0,11.75256 4.369533,22.4504 11.60188,30.58679 -6.026936,3.91754 -13.1086,6.3283 -20.94368,6.3283 -20.642314,0 -37.5177706,-16.57409 -37.5177706,-36.91509 z m 73.2275116,30.58679 c 7.232346,-8.13639 11.60188,-18.83423 11.60188,-30.58679 0,-11.75257 -4.369534,-22.4504 -11.60188,-30.58679 6.026936,-3.91754 13.1086,-6.32831 20.943675,-6.32831 7.83503,0 14.91669,2.26014 20.94363,6.32831 -7.23235,8.13639 -11.75257,18.83422 -11.75257,30.58679 0,11.75256 4.3696,22.4504 11.75257,30.58679 -6.02694,3.91754 -13.1086,6.3283 -20.94363,6.3283 -7.684392,0 -14.916739,-2.41076 -20.943675,-6.3283 z m 56.653365,0 c 7.23235,-8.13639 11.75256,-18.83423 11.75256,-30.58679 0,-11.75257 -4.36953,-22.4504 -11.75256,-30.58679 6.02694,-3.91754 13.10866,-6.32831 20.94368,-6.32831 7.83502,0 14.91669,2.26014 20.94368,6.32831 -7.23235,8.13639 -11.75256,18.83422 -11.75256,30.58679 0,11.75256 4.36953,22.4504 11.75256,30.58679 -6.02699,3.91754 -13.10866,6.3283 -20.94368,6.3283 -7.83502,0 -14.91674,-2.41076 -20.94368,-6.3283 z m 77.59704,6.3283 c -7.68434,0 -14.91668,-2.26008 -20.94368,-6.3283 7.23235,-8.13639 11.75257,-18.83423 11.75257,-30.58679 0,-11.75257 -4.36954,-22.4504 -11.75257,-30.58679 6.027,-3.91754 13.10866,-6.32831 20.94368,-6.32831 20.64232,0 37.51783,16.57415 37.51783,36.9151 0,20.341 -16.87551,36.91509 -37.51783,36.91509 z"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "Mercedes-Benz",
+    svg: (
+      <svg viewBox="0 0 200 200" style={{ height: 36, width: "auto" }}>
+        <circle cx="100" cy="100" r="94" fill="none" stroke="currentColor" strokeWidth="6" />
+        <circle cx="100" cy="100" r="84" fill="none" stroke="currentColor" strokeWidth="3" />
+        <path d="M100 16 L100 100 L178 140" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M100 100 L22 140" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M100 16 L100 100" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Projects() {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const stateRef = useRef({
-    progress: 0,
-    targetProgress: 0,
-    isDragging: false,
-    startX: 0,
-    startProgress: 0,
-    lastX: 0,
-    velocity: 0,
-    autoTimer: null as ReturnType<typeof setInterval> | null,
-  });
-  const cardsRef = useRef<HTMLDivElement[]>([]);
-
-  const getConfig = useCallback(() => {
-    const w = window.innerWidth;
-    if (w < 640) return { sens: 120, xMul: 80, yMul: 18, rotMul: 7, scaleMul: 0.055, distDiv: 100, velDiv: 400 };
-    if (w < 1024) return { sens: 180, xMul: 120, yMul: 28, rotMul: 9, scaleMul: 0.08, distDiv: 140, velDiv: 600 };
-    return { sens: 220, xMul: 160, yMul: 36, rotMul: 11, scaleMul: 0.1, distDiv: 180, velDiv: 750 };
-  }, []);
-
-  useEffect(() => {
-    const wrap = wrapRef.current;
-    if (!wrap) return;
-    const total = slides.length;
-    const s = stateRef.current;
-    const cards = cardsRef.current;
-
-    function updateCards() {
-      const cfg = getConfig();
-      cards.forEach((card, i) => {
-        let diff = (i - s.progress) % total;
-        if (diff > total / 2) diff -= total;
-        if (diff < -total / 2) diff += total;
-        const absD = Math.abs(diff);
-        const x = diff * cfg.xMul;
-        const rot = absD < 0.05 ? 0 : diff * cfg.rotMul;
-        const y = absD < 0.05 ? 0 : absD * cfg.yMul;
-        const centerBoost = absD < 1 ? 1.08 * (1 - absD) + absD : 1;
-        const sc = Math.max(0.5, (1 - absD * cfg.scaleMul) * centerBoost);
-        const z = Math.round(100 - absD * 10);
-        let op = 1;
-        const half = total / 2;
-        if (absD > half - 0.5) op = Math.max(0, (half - absD) * 2);
-        const dimOp = Math.min(0.5, absD * 0.25);
-        const infoOp = absD < 0.5 ? 1 - absD * 2 : 0;
-
-        card.style.transform = `translate3d(${x}px,${y}px,0) rotate(${rot}deg) scale(${sc})`;
-        card.style.opacity = String(op);
-        card.style.zIndex = String(z);
-        const dim = card.querySelector<HTMLElement>(".carousel-card-dim");
-        if (dim) dim.style.background = `rgba(0,0,0,${dimOp})`;
-        const info = card.querySelector<HTMLElement>(".carousel-info");
-        if (info) info.style.opacity = String(infoOp);
-      });
-    }
-
-    let raf: number;
-    function animationLoop() {
-      if (!s.isDragging) {
-        const diff = s.targetProgress - s.progress;
-        s.progress += diff * 0.06;
-        if (Math.abs(diff) < 0.0005) s.progress = s.targetProgress;
-      }
-      updateCards();
-      raf = requestAnimationFrame(animationLoop);
-    }
-
-    function startAuto() {
-      stopAuto();
-      s.autoTimer = setInterval(() => { s.targetProgress = Math.round(s.targetProgress) + 1; }, 5000);
-    }
-    function stopAuto() {
-      if (s.autoTimer) { clearInterval(s.autoTimer); s.autoTimer = null; }
-    }
-
-    function onPointerDown(e: MouseEvent | TouchEvent) {
-      stopAuto();
-      s.isDragging = true;
-      s.startX = "touches" in e ? e.touches[0].clientX : e.clientX;
-      s.startProgress = s.progress;
-      s.lastX = s.startX;
-      s.velocity = 0;
-    }
-    function onPointerMove(e: MouseEvent | TouchEvent) {
-      if (!s.isDragging) return;
-      const x = "touches" in e ? e.touches[0].clientX : e.clientX;
-      const cfg = getConfig();
-      const delta = -(x - s.lastX) / cfg.sens;
-      s.progress += delta;
-      s.velocity = -(x - s.lastX);
-      s.lastX = x;
-    }
-    function onPointerUp() {
-      if (!s.isDragging) return;
-      s.isDragging = false;
-      const cfg = getConfig();
-      const distShift = -(s.lastX - s.startX) / cfg.distDiv;
-      const velShift = -s.velocity / cfg.velDiv;
-      let totalShift = Math.round(distShift + velShift);
-      totalShift = Math.max(-3, Math.min(3, totalShift));
-      s.targetProgress = Math.round(s.startProgress) + totalShift;
-      startAuto();
-    }
-
-    wrap.addEventListener("mousedown", onPointerDown);
-    window.addEventListener("mousemove", onPointerMove);
-    window.addEventListener("mouseup", onPointerUp);
-    wrap.addEventListener("touchstart", onPointerDown, { passive: true });
-    window.addEventListener("touchmove", onPointerMove, { passive: true });
-    window.addEventListener("touchend", onPointerUp);
-
-    let wheelLocked = false;
-    function onWheel(e: WheelEvent) {
-      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
-      e.preventDefault();
-      if (wheelLocked) return;
-      if (Math.abs(e.deltaX) < 8) return;
-      wheelLocked = true;
-      stopAuto();
-      s.targetProgress = Math.round(s.targetProgress) + (e.deltaX > 0 ? 1 : -1);
-      setTimeout(() => { wheelLocked = false; startAuto(); }, 1200);
-    }
-    wrap.addEventListener("wheel", onWheel, { passive: false });
-
-    updateCards();
-    raf = requestAnimationFrame(animationLoop);
-    startAuto();
-
-    return () => {
-      cancelAnimationFrame(raf);
-      stopAuto();
-      wrap.removeEventListener("mousedown", onPointerDown);
-      window.removeEventListener("mousemove", onPointerMove);
-      window.removeEventListener("mouseup", onPointerUp);
-      wrap.removeEventListener("touchstart", onPointerDown);
-      window.removeEventListener("touchmove", onPointerMove);
-      window.removeEventListener("touchend", onPointerUp);
-      wrap.removeEventListener("wheel", onWheel);
-    };
-  }, [getConfig]);
-
   return (
     <section
       id="projelerimiz"
-      style={{ padding: "clamp(5rem,10vh,8rem) clamp(1.5rem,4vw,4rem)", maxWidth: 1180, margin: "0 auto" }}
+      style={{ padding: "clamp(4rem,8vh,7rem) clamp(1.5rem,4vw,4rem)", maxWidth: 1180, margin: "0 auto" }}
     >
-      <p className="reveal" style={{ fontFamily: "var(--font-m)", fontSize: ".66rem", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--cream-46)", marginBottom: "1.2rem" }}>
-        Projelerimiz
-      </p>
-      <h2 className="reveal" style={{ fontFamily: "var(--font-d)", fontWeight: 600, fontSize: "clamp(1.8rem,3.2vw,2.6rem)", lineHeight: 1.12, letterSpacing: "-.025em", textWrap: "balance", marginBottom: ".8rem" }}>
-        İşlerimiz bizim yerimize konuşsun.
-      </h2>
-      <p className="reveal" style={{ fontSize: ".92rem", color: "var(--cream-70)", maxWidth: 540, marginBottom: "3rem", lineHeight: 1.7 }}>
-        Farklı sektörlerden markalara ürettiğimiz çözümlerden bazıları. Her proje, müşterimizin hedeflerine özel tasarlandı.
-      </p>
+      <div className="reveal" style={{ marginBottom: "2.5rem" }}>
+        <p style={{
+          fontFamily: "var(--font-m)",
+          fontSize: ".66rem",
+          letterSpacing: ".14em",
+          textTransform: "uppercase",
+          color: "var(--cream-46)",
+          marginBottom: "1.2rem",
+        }}>
+          Referanslarımız
+        </p>
+        <h2 style={{
+          fontFamily: "var(--font-d)",
+          fontWeight: 600,
+          fontSize: "clamp(1.8rem,3.2vw,2.6rem)",
+          lineHeight: 1.12,
+          letterSpacing: "-.025em",
+          color: "var(--cream)",
+          marginBottom: ".8rem",
+        }}>
+          Güçlü markaların dijital partneri.
+        </h2>
+        <p style={{
+          fontSize: ".92rem",
+          lineHeight: 1.7,
+          color: "var(--cream-70)",
+          maxWidth: 540,
+        }}>
+          Sektör liderlerinin dijital dönüşüm yolculuğunda yanlarındayız. Her marka için özel çözümler üretiyoruz.
+        </p>
+      </div>
 
-      <div
-        ref={wrapRef}
-        className="reveal relative w-full flex items-center justify-center overflow-hidden select-none cursor-grab active:cursor-grabbing"
-        style={{ height: "clamp(320px,50vw,520px)", touchAction: "pan-y" }}
-      >
-        {slides.map((slide, i) => (
-          <div
-            key={i}
-            ref={(el) => { if (el) cardsRef.current[i] = el; }}
-            className="absolute pointer-events-none overflow-hidden"
-            style={{
-              width: "clamp(180px,38vw,280px)",
-              height: "clamp(260px,50vw,400px)",
-              borderRadius: 20,
-              willChange: "transform,opacity",
-              background: "var(--cream-08)",
-            }}
-          >
-            <img src={slide.image} alt={slide.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
-            <div className="carousel-card-dim absolute inset-0 pointer-events-none" />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.18) 40%,transparent 100%)" }} />
+      <div className="reveal" style={{ color: "var(--cream)" }}>
+        <div style={{
+          height: 1,
+          background: "linear-gradient(to right, transparent, rgba(243,239,230,.12), transparent)",
+        }} />
+
+        <LogoCloud>
+          {logos.map((logo) => (
             <div
-              className="absolute"
-              style={{
-                top: "clamp(.6rem,1.5vw,1.2rem)",
-                right: "clamp(.6rem,1.5vw,1.2rem)",
-                padding: ".3rem .7rem",
-                borderRadius: 100,
-                background: "rgba(255,255,255,.92)",
-                backdropFilter: "blur(8px)",
-                fontFamily: "var(--font-b)",
-                fontSize: ".62rem",
-                fontWeight: 700,
-                letterSpacing: ".08em",
-                textTransform: "uppercase",
-                color: "#111",
-              }}
+              key={logo.name}
+              className="flex items-center flex-shrink-0"
             >
-              {slide.badge}
+              {logo.svg}
             </div>
-            <div
-              className="carousel-info absolute text-white"
-              style={{ bottom: "clamp(1rem,2.5vw,2rem)", left: "clamp(.8rem,2vw,1.4rem)", right: "clamp(.8rem,2vw,1.4rem)" }}
-            >
-              <p style={{ fontFamily: "var(--font-d)", fontWeight: 600, fontSize: "clamp(.88rem,1.8vw,1.2rem)", lineHeight: 1.2, marginBottom: ".3rem" }}>{slide.title}</p>
-              <p className="hidden sm:block" style={{ fontSize: "clamp(.7rem,1.2vw,.82rem)", color: "rgba(255,255,255,.7)", lineHeight: 1.5, fontStyle: "italic" }}>{slide.desc}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </LogoCloud>
+
+        <div style={{
+          height: 1,
+          background: "linear-gradient(to right, transparent, rgba(243,239,230,.12), transparent)",
+        }} />
       </div>
     </section>
   );
