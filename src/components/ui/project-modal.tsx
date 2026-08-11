@@ -332,7 +332,7 @@ export default function ProjectModal({ open, onClose }: { open: boolean; onClose
             <h3 style={{ fontFamily: "var(--font-d)", fontWeight: 600, fontSize: "1.3rem", letterSpacing: "-.02em", marginBottom: ".4rem", color: "var(--cream)" }}>
               Projenizi anlatın
             </h3>
-            <p style={{ fontSize: ".84rem", color: "rgba(243,239,230,.45)", marginBottom: "2rem" }}>
+            <p style={{ fontSize: ".84rem", color: "rgba(243,239,230,.45)", marginBottom: "clamp(.6rem, 2vw, 2rem)" }}>
               Formu doldurun, 24 saat içinde size dönelim.
             </p>
 
