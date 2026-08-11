@@ -85,7 +85,7 @@ export default function Projects() {
   return (
     <section
       id="projelerimiz"
-      style={{ padding: "clamp(4rem,8vh,7rem) clamp(1.5rem,4vw,4rem)", maxWidth: 1180, margin: "0 auto" }}
+      style={{ padding: "clamp(2.5rem,4vh,4rem) clamp(1.5rem,4vw,4rem) clamp(1.5rem,3vh,2rem)", maxWidth: 1180, margin: "0 auto" }}
     >
       <div className="reveal" style={{ marginBottom: "2.5rem" }}>
         <p style={{

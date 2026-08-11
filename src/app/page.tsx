@@ -42,7 +42,7 @@ export default function Home() {
             <Testimonials />
             <Projects />
           </div>
-          <div className="fullpage-section" style={{ background: "var(--base)" }}>
+          <div className="fullpage-section-auto" style={{ background: "var(--base)" }}>
             <Contact />
             <Footer
               onOpenPrivacy={() => setLegalType("privacy")}

@@ -83,7 +83,7 @@ export default function Contact() {
     <div className="relative overflow-hidden" style={{ background: "#f5f2ec" }}>
       <section
         id="bize-ulasin"
-        style={{ padding: "clamp(5rem,10vh,8rem) clamp(1.5rem,4vw,4rem)", maxWidth: 1180, margin: "0 auto" }}
+        style={{ padding: "clamp(3rem,6vh,5rem) clamp(1.5rem,4vw,4rem) clamp(2rem,4vh,3rem)", maxWidth: 1180, margin: "0 auto" }}
       >
         <p className="reveal" style={{ fontFamily: "var(--font-m)", fontSize: ".66rem", letterSpacing: ".14em", textTransform: "uppercase", color: "rgba(13,11,9,.4)", marginBottom: "1.2rem" }}>
           İletişim
