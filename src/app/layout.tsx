@@ -86,7 +86,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="tr"
       className={`${inter.variable} ${jetbrainsMono.variable} dark antialiased`}
-      style={{ scrollBehavior: "smooth" }}
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -33,6 +33,7 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 body {
@@ -41,7 +42,29 @@ body {
   font-family: var(--font-b);
   font-weight: 400;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ─── Fullpage Scroll ─── */
+.fullpage-container {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.fullpage-wrapper {
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+.fullpage-section {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.fullpage-section-auto {
+  overflow: hidden;
 }
 
 /* ─── Entrance Animations ─── */

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useReveal } from "@/hooks/use-reveal";
+import { useFullpage } from "@/hooks/use-fullpage";
 import Header from "@/components/sections/header";
 import Hero from "@/components/sections/hero";
 import About from "@/components/sections/about";
@@ -14,33 +15,47 @@ import ContactWidget from "@/components/ui/contact-widget";
 import ProjectModal from "@/components/ui/project-modal";
 import LegalModal from "@/components/ui/legal-modal";
 import Preloader from "@/components/ui/preloader";
-import ScrollToTop from "@/components/ui/scroll-to-top";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [legalType, setLegalType] = useState<"privacy" | "terms" | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   useReveal();
+  useFullpage(containerRef);
 
   return (
     <>
       <Preloader />
-      <div className="relative z-[3]">
-        <Header onOpenModal={() => setModalOpen(true)} />
-        <Hero />
-        <div className="relative z-[4]" style={{ background: "var(--base)" }}>
-          <About />
-          <Services />
-          <Testimonials />
-          <Projects />
-          <Contact />
-          <Footer
-            onOpenPrivacy={() => setLegalType("privacy")}
-            onOpenTerms={() => setLegalType("terms")}
-          />
+      <Header onOpenModal={() => setModalOpen(true)} />
+      <div ref={containerRef} className="fullpage-container">
+        <div className="fullpage-wrapper">
+          <div className="fullpage-section">
+            <Hero />
+          </div>
+          <div className="fullpage-section" style={{ background: "var(--base)" }}>
+            <About />
+          </div>
+          <div className="fullpage-section" style={{ background: "var(--base)" }}>
+            <Services />
+          </div>
+          <div className="fullpage-section" style={{ background: "var(--base)" }}>
+            <Testimonials />
+          </div>
+          <div className="fullpage-section" style={{ background: "var(--base)" }}>
+            <Projects />
+          </div>
+          <div className="fullpage-section" style={{ background: "var(--base)" }}>
+            <Contact />
+          </div>
+          <div className="fullpage-section-auto" style={{ background: "var(--base)" }}>
+            <Footer
+              onOpenPrivacy={() => setLegalType("privacy")}
+              onOpenTerms={() => setLegalType("terms")}
+            />
+          </div>
         </div>
       </div>
       <ContactWidget />
-      <ScrollToTop />
       <ProjectModal open={modalOpen} onClose={() => setModalOpen(false)} />
       <LegalModal type={legalType} open={!!legalType} onClose={() => setLegalType(null)} />
     </>
