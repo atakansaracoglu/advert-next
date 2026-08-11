@@ -40,14 +40,10 @@ export default function Home() {
           </div>
           <div className="fullpage-section" style={{ background: "var(--base)" }}>
             <Testimonials />
-          </div>
-          <div className="fullpage-section" style={{ background: "var(--base)" }}>
             <Projects />
           </div>
           <div className="fullpage-section" style={{ background: "var(--base)" }}>
             <Contact />
-          </div>
-          <div className="fullpage-section-auto" style={{ background: "var(--base)" }}>
             <Footer
               onOpenPrivacy={() => setLegalType("privacy")}
               onOpenTerms={() => setLegalType("terms")}
