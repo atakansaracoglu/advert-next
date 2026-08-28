@@ -15,6 +15,7 @@ export function GET() {
     token_endpoint_auth_methods_supported: ["client_secret_post"],
     service_documentation: "https://www.advert.com.tr/auth.md",
     agent_auth: {
+      skill: "https://www.advert.com.tr/auth.md",
       register_uri: "https://www.advert.com.tr/oauth/register",
       identity_types_supported: ["web_did", "email"],
       credential_types_supported: ["client_credentials"],
