@@ -17,9 +17,9 @@ export function GET() {
     agent_auth: {
       skill: "https://www.advert.com.tr/auth.md",
       register_uri: "https://www.advert.com.tr/oauth/register",
-      identity_types_supported: ["web_did", "email"],
+      identity_types_supported: ["anonymous"],
       credential_types_supported: ["client_credentials"],
-      claim_url: "https://www.advert.com.tr/oauth/claim",
+      claim_uri: "https://www.advert.com.tr/oauth/claim",
     },
   };
 
