@@ -1,6 +1,21 @@
 import { NextResponse } from "next/server";
 
-const AUTH_MD = `# Auth.md — Advert Dijital Ajans
+const AUTH_MD = `---
+agent_auth:
+  authorization_server: "https://www.advert.com.tr/.well-known/oauth-authorization-server"
+  protected_resource: "https://www.advert.com.tr/.well-known/oauth-protected-resource"
+  register_uri: "https://www.advert.com.tr/oauth/register"
+  identity_types_supported:
+    - web_did
+    - email
+  credential_types_supported:
+    - client_credentials
+  scopes_supported:
+    - read
+    - contact
+---
+
+# Auth.md — Advert Dijital Ajans
 
 > Agent authentication metadata for advert.com.tr
 
