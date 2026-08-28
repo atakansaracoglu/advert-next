@@ -7,6 +7,9 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: "/",
         disallow: ["/api/", "/private/"],
+        other: {
+          "Content-Signal": "ai-train=yes, search=yes, ai-input=yes",
+        },
       },
       {
         userAgent: "GPTBot",

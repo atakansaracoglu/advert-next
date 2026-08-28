@@ -11,7 +11,7 @@ export function GET() {
     },
     entries: [
       {
-        id: "urn:air:advert.com.tr:contact:api",
+        identifier: "urn:air:advert.com.tr:contact:api",
         displayName: "Advert Contact API",
         type: "application/json",
         url: "https://www.advert.com.tr/api/contact",
@@ -24,7 +24,7 @@ export function GET() {
         ],
       },
       {
-        id: "urn:air:advert.com.tr:mcp:server-card",
+        identifier: "urn:air:advert.com.tr:mcp:server-card",
         displayName: "Advert MCP Server Card",
         type: "application/json",
         url: "https://www.advert.com.tr/.well-known/mcp/server-card.json",
@@ -35,7 +35,7 @@ export function GET() {
         ],
       },
       {
-        id: "urn:air:advert.com.tr:skills:index",
+        identifier: "urn:air:advert.com.tr:skills:index",
         displayName: "Advert Agent Skills",
         type: "application/json",
         url: "https://www.advert.com.tr/.well-known/agent-skills/index.json",
@@ -46,7 +46,7 @@ export function GET() {
         ],
       },
       {
-        id: "urn:air:advert.com.tr:catalog:api",
+        identifier: "urn:air:advert.com.tr:catalog:api",
         displayName: "Advert API Catalog",
         type: "application/linkset+json",
         url: "https://www.advert.com.tr/.well-known/api-catalog",
