@@ -1,8 +1,25 @@
 import { NextResponse } from "next/server";
 
-const AUTH_MD = `# auth.md — Advert Dijital Ajans
+const AUTH_MD = `# auth.md
 
 > Agent authentication metadata for advert.com.tr
+
+## agent_auth
+
+\`\`\`json
+{
+  "agent_auth": {
+    "authorization_server": "https://www.advert.com.tr/.well-known/oauth-authorization-server",
+    "protected_resource": "https://www.advert.com.tr/.well-known/oauth-protected-resource",
+    "skill": "https://www.advert.com.tr/auth.md",
+    "register_uri": "https://www.advert.com.tr/oauth/register",
+    "identity_types_supported": ["anonymous"],
+    "credential_types_supported": ["client_credentials"],
+    "claim_uri": "https://www.advert.com.tr/oauth/claim",
+    "scopes_supported": ["read", "contact"]
+  }
+}
+\`\`\`
 
 ## Overview
 
@@ -20,16 +37,11 @@ Agents can register via the OAuth 2.0 Dynamic Client Registration endpoint:
 
 ### Supported Identity Types
 
-| Type | Description |
-|------|-------------|
-| \`web_did\` | Decentralized Web Identifier |
-| \`email\` | Email-based agent identity |
+- \`anonymous\` — No prior identity required
 
 ### Supported Credential Types
 
-| Type | Description |
-|------|-------------|
-| \`client_credentials\` | OAuth 2.0 client credentials grant |
+- \`client_credentials\` — OAuth 2.0 client credentials grant
 
 ### Registration Request
 
